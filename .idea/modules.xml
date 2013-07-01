@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RaddeApp/RaddeApp.iml" filepath="$PROJECT_DIR$/RaddeApp/RaddeApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RaddeAppProject.iml" filepath="$PROJECT_DIR$/RaddeAppProject.iml" />
+    </modules>
+  </component>
+</project>
+
