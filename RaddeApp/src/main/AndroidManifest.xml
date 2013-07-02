@@ -37,8 +37,8 @@
             </intent-filter>
         </activity>
         <service
-                android:name=".BackgroundApp"
-                android:label="BackgroundRaddeApp"/>
+                android:name=".BackgroundService"
+                android:label="BackgroundRaddeService"/>
     </application>
 
 </manifest>
