@@ -88,8 +88,11 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
             @Override
             public void onClick(View v){
                 System.out.println("Radde123 button clicked");
-
-
+                startService(new Intent(MainActivity.this,BackgroundService.class));
+                Intent startMain = new Intent(Intent.ACTION_MAIN);
+                startMain.addCategory(Intent.CATEGORY_HOME);
+                startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(startMain);
             }
         });
         mSearchView = (SearchView) findViewById(R.id.searchView);
@@ -360,5 +363,19 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
             // TODO: check this.exception
             // TODO: do something with the feed
         }
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("Radde123 onResume");
+        stopService(new Intent(MainActivity.this,
+                BackgroundService.class));
+        /*
+        if(isService)
+        {
+            TextView tv = (TextView) findViewById(R.id.textView1);
+            tv.setText("Service Resumed");
+            isService = false;
+        }*/
     }
 }
