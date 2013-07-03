@@ -10,6 +10,9 @@ import android.util.Log;
  */
 public class BackgroundService extends Service {
 
+    private Double finalDestinationlat;
+    private Double finalDestinationlng;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -19,7 +22,13 @@ public class BackgroundService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         System.out.println("Radde123 Service: onStartCommand");
-        Log.i("Radde123","Radde123");
+
+        finalDestinationlng = intent.getDoubleExtra("lng",0.0);
+        finalDestinationlat = intent.getDoubleExtra("lat",0.0);
+
+        System.out.println("Radde123 Service: lat: " + finalDestinationlat +
+                " lng: " + finalDestinationlng);
+
         return Service.START_STICKY;
     }
 

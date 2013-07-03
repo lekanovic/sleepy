@@ -88,7 +88,12 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
             @Override
             public void onClick(View v){
                 System.out.println("Radde123 button clicked");
-                startService(new Intent(MainActivity.this,BackgroundService.class));
+
+                Intent serviceIntent = new Intent(MainActivity.this,BackgroundService.class);
+                serviceIntent.putExtra("lat",dest_latitude);
+                serviceIntent.putExtra("lng",dest_longitude);
+                startService(serviceIntent);
+
                 Intent startMain = new Intent(Intent.ACTION_MAIN);
                 startMain.addCategory(Intent.CATEGORY_HOME);
                 startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -236,7 +241,14 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
                                 dest_latitude, dest_longitude);
 
                         Integer distanceToDestination = dist.getDistance();
-                        System.out.println("Radde123 dist: " + distanceToDestination);
+                        System.out.println("Radde123 dist: " + distanceToDestination +
+                            " curlng " + longitude + " curlat " + latitude +
+                            " destlng " + dest_longitude + " destlat " + dest_latitude);
+
+                        if (location.hasSpeed()) {
+                            msg = "speed: " + location.getSpeed();
+                            Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
+                        }
 
                         if (distanceToDestination < 120){
                             msg = "You have reached your destination";
